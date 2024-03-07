@@ -1,9 +1,12 @@
 from flask import Flask
 from flask import request
+from flask_cors import CORS, cross_origin
 import os
 from datetime import datetime
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config["CORS_HEADERS"] = "Content-Type"
 
 
 @app.route("/")
@@ -12,6 +15,7 @@ def hello():
 
 
 @app.route("/feed", methods=["GET", "POST"])
+@cross_origin()
 def write_feed_time():
     if request.method == "GET":
         """return the last feed time from the file"""
