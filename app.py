@@ -11,12 +11,12 @@ def hello():
 
 
 @app.route("/feed", methods=["GET", "POST"])
-def write_feed_time(user_id):
+def write_feed_time():
     if request.method == "GET":
-        """return the information for <user_id>"""
+        """return the last feed time from the file"""
         return {}
     if request.method == "POST":
-        """modify/update the information for <user_id>"""
+        """add the last timestamp to the file"""
         # you can use <user_id>, which is a str but could
         # changed to be int or whatever you want, along
         # with your lxml knowledge to make the required
