@@ -23,9 +23,9 @@ def write_feed_time():
         # with your lxml knowledge to make the required
         # changes
         data = request.json  # a multidict containing POST data
-        to_write = {**data, "timestamp": datetime.now()}
+        to_write = {**data, "timestamp": datetime.now().isoformat()}
         app.logger.info("%s << POST data", str(to_write))
-        with open("./willow_fed_at.json", "w") as f:
+        with open("./willow_fed_at.json", "a") as f:
             f.write(str(to_write))
         return {"success": 1}
     else:
