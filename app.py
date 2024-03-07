@@ -23,6 +23,7 @@ def write_feed_time():
         # changes
         data = request.form  # a multidict containing POST data
         print(data)
+        return {}
     else:
         # POST Error 405 Method Not Allowed
         print(f"langford: NOT A GET OR POST!")
