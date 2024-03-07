@@ -15,7 +15,9 @@ def hello():
 def write_feed_time():
     if request.method == "GET":
         """return the last feed time from the file"""
-        return {}
+        with open("./willow_fed_at.json", "r") as file:
+            lines = [line.rstrip() for line in file]
+        return str(lines)
     if request.method == "POST":
         """add the last timestamp to the file"""
         # you can use <user_id>, which is a str but could
