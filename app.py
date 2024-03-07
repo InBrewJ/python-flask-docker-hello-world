@@ -22,7 +22,9 @@ def write_feed_time():
         # with your lxml knowledge to make the required
         # changes
         data = request.form  # a multidict containing POST data
-        print(data)
+        print(data["willow_fed"])
+        f = open("./willow_fed_at.json", "w")
+        f.write(data)
         return {}
     else:
         # POST Error 405 Method Not Allowed
