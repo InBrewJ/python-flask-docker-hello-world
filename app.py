@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import request
 import os
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -22,10 +23,11 @@ def write_feed_time():
         # with your lxml knowledge to make the required
         # changes
         data = request.json  # a multidict containing POST data
-        app.logger.info("%s << POST data", data)
-        f = open("./willow_fed_at.json", "w")
-        f.write(data)
-        return {}
+        to_write = {**data, "timestamp": datetime.now()}
+        app.logger.info("%s << POST data", str(to_write))
+        with open("./willow_fed_at.json", "w") as f:
+            f.write(str(to_write))
+        return {"success": 1}
     else:
         # POST Error 405 Method Not Allowed
         print(f"langford: NOT A GET OR POST!")
