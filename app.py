@@ -27,7 +27,7 @@ def write_feed_time():
         data = request.json  # a multidict containing POST data
         to_write = {**data, "timestamp": datetime.now().isoformat()}
         app.logger.info("%s << POST data", str(to_write))
-        with open("./willow_fed_at.json", "a") as f:
+        with open("./willow_fed_at.json", "w") as f:
             f.write(str(to_write))
         return {"success": 1}
     else:
