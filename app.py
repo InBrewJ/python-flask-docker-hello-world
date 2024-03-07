@@ -21,7 +21,7 @@ def write_feed_time():
         # changed to be int or whatever you want, along
         # with your lxml knowledge to make the required
         # changes
-        data = request.form  # a multidict containing POST data
+        data = request.json  # a multidict containing POST data
         app.logger.info("%s << POST data", data)
         f = open("./willow_fed_at.json", "w")
         f.write(data)
